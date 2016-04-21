@@ -1,0 +1,162 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #0061AD;
+}
+
+a:hover {
+    color: #318EF0;
+}
+
+.Mi_scroll {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.Mi_body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.Mi_wrapper {
+    min-height: 100%;
+    width: 100%;
+}
+
+.Mi_header {
+    height: 100px;
+    width: 100%;
+    background-color: #e7e7e7;
+    border-bottom: 1px solid #b7b7b7;
+}
+
+.Mi_footer {
+    position: relative;
+    z-index: 1;
+    margin: -101px 0 0 0;
+    padding: 0;
+    height: 100px;
+    width: 100%;
+    background-color: #e7e7e7;
+    border-top: 1px solid #b7b7b7;
+}
+
+.Mi_container {
+    padding: 10px 20px;
+}
+
+.Mi_navi {
+    height: 100px;
+    width: 100%;
+    background-color: #e7e7e7;
+}
+
+.Mi_navi_container {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 0 0 120px;
+}
+
+.Mi_navi_container .navbar-header {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100px;
+    width: 120px;
+    background-color: #e9f9f9;
+}
+
+.Mi_navi_list {
+    margin: 0;
+    padding: 0;
+}
+
+.Mi_navi_element {}
+
+.Mi_navi_element.active {}
+
+.Mi_navi_link {}
+
+.Mi_row {}
+
+.Mi_cell {
+    padding-bottom: 10px;
+}
+
+.Mi_pph {
+    margin: 0;
+    padding: 0;
+}
+
+.Mi_title_i {
+    margin: 0 0 20px;
+}
+
+.Mi_title_ii {
+    margin: 0 0 15px;
+}
+
+.Mi_title_iii {
+    margin: 0 0 15px;
+}
+
+.Mi_title_iv {
+    margin: 0 0 10px;
+}
+
+.Mi_title_v {}
+
+.Mi_title_vi {}
+
+.w10 {
+    width: 10%;
+}
+
+.w20 {
+    width: 20%;
+}
+
+.w30 {
+    width: 30%;
+}
+
+.w33 {
+    width: 33%;
+}
+
+.w40 {
+    width: 40%;
+}
+
+.w50 {
+    width: 50%;
+}
+
+.w60 {
+    width: 60%;
+}
+
+.w70 {
+    width: 70%;
+}
+
+.w80 {
+    width: 80%;
+}
+
+.w90 {
+    width: 90%;
+}
+
+.w100 {
+    width: 100%;
+}
