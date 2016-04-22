@@ -1,4 +1,56 @@
-<div class="Mi_frame">
-    <h1>Frame</h1>
-    <p>frame description</p>
+<div style="display:inline-block;vertical-align:top;padding:4px;border:1px solid #e7e7e7;">
+    <div style="padding:7px 14px;border:1px solid #e7e7e7;width:300px;" class="Mi_frame">
+        <section style="padding: 0 0 10px 0;margin: 0 0 10px;border-bottom:1px solid #e7e7e7;" class="">
+            <h1>Frame</h1>
+            <div class="Mi_form_layout">
+                <form id="frame_form" method="POST">
+                    <div class="">
+                        <label for="frame_name">frame_name</label>
+                        <input id="frame_name" name="frame_name" type="text">
+                    </div>
+
+                    <div class="">
+                        <label for="frame_description">frame_description</label>
+                        <input id="frame_description" name="frame_description" type="text">
+                    </div>
+
+                    <div class="">
+                        <label for="frame_template">frame_template</label>
+                        <input id="frame_template" name="frame_template" type="text">
+                    </div>
+
+                    <input value="Создать" type="submit">
+                    <button id="frame_from_reset">Сбросить</button>
+                </form>
+            </div>
+        </section>
+        <section style="padding: 0 0 10px 0;" class="">
+            <h1>Frame List</h1>
+            <ul>
+                <li><span>Frame [Core]</span></li>
+                <li><span>Frame_js [Core]</span></li>
+                <li><span>Frame_css [Core]</span></li>
+            </ul>
+        </section>
+
+
+        <script>
+            var form = document.getElementById("frame_form"),
+                frame_from_reset = document.getElementById("frame_from_reset");
+            form.addEventListener("submit", function(e) {
+                console.warn("submit event");
+                e.preventDefault();
+            }, false);
+
+            form.addEventListener("reset", function(e) {
+                console.warn("reset event");
+            }, false);
+
+            frame_from_reset.addEventListener("click", function(e) {
+                console.log("frame_from_reset click event");
+                form.reset();
+            }, false);
+        </script>
+
+    </div>
 </div>

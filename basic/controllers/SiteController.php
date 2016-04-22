@@ -96,7 +96,10 @@ class SiteController extends Controller
     
     public function actionEldamar() {
         MapleAsset::register($this->view);
+        
         $template = file_get_contents(Yii::getAlias('@webroot/frames/frames.html'));
+        
+        
         return $this->render('eldamar', [
             'template' => $template
         ]);
