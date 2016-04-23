@@ -14,7 +14,7 @@ class m160421_051311_create_table_frames extends Migration
             'author' => $this->integer()->notNull(),
             'name' => $this->string(255)->notNull(),
             'description' => $this->text()->notNull(),
-            'template' => $this->text()->notNull()
+            'path' => $this->text()->notNull()
         ]);
     }
 

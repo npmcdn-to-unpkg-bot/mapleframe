@@ -9,7 +9,9 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\assets\MapleAsset;
+use app\assets\FramesAsset;
 use yii\helpers\Json;
+use yii\db\Query;
 
 class SiteController extends Controller
 {
@@ -96,13 +98,46 @@ class SiteController extends Controller
     
     public function actionEldamar() {
         MapleAsset::register($this->view);
+        $frame_asset = (new \app\assets\FramesAsset);
+
+        $frames = (new \yii\db\Query())
+            ->select('f.id, f.name, f.description, f.path')
+            ->from('{{%frames}} f')
+            ->all();
         
-        $template = file_get_contents(Yii::getAlias('@webroot/frames/frames.html'));
-        
-        
+        try {
+            foreach($frames as $index => $frame) {
+                $frames[$index]['template'] = file_get_contents(Yii::getAlias('@webroot/' . $frame['path']));
+                $scripts = $this->_frameScripts($frame['id']);
+                $frame_asset->js = array_merge($frame_asset->js, $this->_assetsScripts($scripts));
+                $frames[$index]['scripts'] = $scripts;
+            }
+        }
+        catch(\Exception $e) {
+            
+        }
+        $frame_asset->registerAssetFiles($this->view);
         return $this->render('eldamar', [
-            'template' => $template
+            'frames' => $frames
         ]);
+    }
+    
+    protected function _assetsScripts($frame_scripts) {
+        $result = [];
+        if(is_array($frame_scripts)) {
+            foreach($frame_scripts as $index => $script) {
+                $result[] = $script['path'];
+            }
+        }
+        return $result;
+    }
+    
+    protected function _frameScripts($frame_id) {
+        return (new \yii\db\Query())
+                ->select('fj.id, fj.frame_id, fj.path, fj.name, fj.description, fj.position, fj.type')
+                ->from('{{%frame_js}} fj')
+                ->where('fj.frame_id = :id', [':id'=>$frame_id])
+                ->all();
     }
     
     public function beforeAction($action)

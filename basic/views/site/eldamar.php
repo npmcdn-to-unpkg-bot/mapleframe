@@ -1,7 +1,10 @@
 <?php
 
-//$this->registerJsFile(Yii::getAlias('@web/js/core.js'));
-echo $template;
+$this->registerCssFile('http://maplemoon.ru/mapleInterface/form/form.core.css');
+foreach($frames as $frame) {
+    echo($frame['template']);
+}
+
 ?>
 
 <form style="display:none;" id="qwerty">
