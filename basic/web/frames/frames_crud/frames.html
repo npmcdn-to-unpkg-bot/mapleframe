@@ -1,17 +1,9 @@
 <div style="display:inline-block;vertical-align:top;padding:4px;border:1px solid #e7e7e7;">
-    <div style="padding:7px 14px;border:1px solid #e7e7e7;width:300px;" class="Mi_frame">
+    <div style="padding:7px 14px;border:1px solid #e7e7e7;width:600px;" class="Mi_frame">
         <section style="padding: 0 0 10px 0;margin: 0 0 10px;border-bottom:1px solid #e7e7e7;" class="">
             <h1 style="margin:0 0 10px;" class="Gi_h1">Frame</h1>
             <div class="Mi_form_layout">
                 <form class="Mi_form Gi_no_padding" id="frame_form" method="POST">
-                    
-                    <div class="Mi_element_layout Gi_no_padding">
-                        <div class="Mi_input_layout">
-                            <div class="Mi_input_clear"></div>
-                            <input class="Mi_input Mi_input_text" autocomplete="off" id="frame_name" name="frame_name" type="text">
-                        </div>
-                        <label class="Mi_label" for="frame_name">frame_name</label>
-                    </div>
 
                     <div class="Mi_element_layout Gi_no_padding">
                         <div class="Mi_input_layout">
@@ -28,22 +20,61 @@
                         </div>
                         <label class="Mi_label" for="frame_name">frame_name</label>
                     </div>
-                    
+
+                    <div class="Mi_element_layout Gi_no_padding">
+                        <div class="Mi_input_layout">
+                            <div class="Mi_input_clear"></div>
+                            <input class="Mi_input Mi_input_text" autocomplete="off" id="frame_name" name="frame_name" type="text">
+                        </div>
+                        <label class="Mi_label" for="frame_name">frame_name</label>
+                    </div>
+
                     <div style="margin-top:40px;" class="Mi_element_layout Mi_btnGroup Mi_submitGroup">
                         <input class="Mi_btn" value="Создать" type="submit">
                         <button class="Mi_btn" id="frame_from_reset">Сбросить</button>
                     </div>
-                    
+
                 </form>
             </div>
         </section>
         <section style="padding: 0 0 10px 0;" class="">
             <h1>Frame List</h1>
-            <ul>
-                <li><span>Frame [Core]</span></li>
-                <li><span>Frame_js [Core]</span></li>
-                <li><span>Frame_css [Core]</span></li>
-            </ul>
+            <div id="table_layout" class="Mi_table_layout">
+                <div class="Mi_btnGroup for_table">
+                    <button class="Mi_btn">add</button>
+                    <button class="Mi_btn">edit</button>
+                    <button disabled="disabled" class="Mi_btn">disabled</button>
+                </div>
+                <table class="Mi_table">
+                    <thead class="Mi_table__head">
+                        <tr class="Mi_table__row">
+                            <th class="Mi_table__cell head"></th>
+                            <th class="Mi_table__cell head">Заголовок</th>
+                            <th class="Mi_table__cell head">Колонка 2</th>
+                            <th class="Mi_table__cell head">Колонка 3</th>
+                        </tr>
+                    </thead>
+                    <tbody class="Mi_table__body">
+                        <tr class="Mi_table__row active">
+                            <td class="Mi_table__cell">
+                                <input type="checkbox">
+                            </td>
+                            <td class="Mi_table__cell">
+                                <span>Звёздный путь: Фильм</span>
+                            </td>
+                            <td class="Mi_table__cell Gi_tac">14.145</td>
+                            <td class="Mi_table__cell Gi_tac">14.589</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="Mi_btnGroup for_table">
+                    <button class="Mi_btn">prev</button>
+                    <button class="Mi_btn">1</button>
+                    <button disabled="disabled" class="Mi_btn active">2</button>
+                    <button class="Mi_btn">3</button>
+                    <button class="Mi_btn">next</button>
+                </div>
+            </div>
         </section>
 
 
