@@ -96,6 +96,16 @@ class SiteController extends Controller
         return $this->render('about');
     }
     
+    public function actionFrames() {
+        $frames = (new Query())
+            ->select('f.id, f.name, f.description, f.path')
+            ->from('{{%frames}} f')
+            ->all();
+        header('HTTP/1.1 200 OK');
+        header('Content-type: application/json; charset=UTF-8');
+        echo JSON::encode($frames);
+    }
+    
     public function actionEldamar() {
         MapleAsset::register($this->view);
         $frame_asset = (new \app\assets\FramesAsset);

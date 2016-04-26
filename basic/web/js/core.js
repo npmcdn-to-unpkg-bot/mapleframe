@@ -1,5 +1,15 @@
-qwerty.addEventListener("submit", function(e) {
+(function(){
+    window.addEventListener('storage', function(e){
+        console.warn('storage', e);
+    });
+    window.sessionStorage.setItem('frames', {});
+    window.sessionStorage.setItem('data', {});
+    
+})();
+/*qwerty.addEventListener("submit", function(e) {
     console.warn("qwerty submit");
+    
+    window.sessionStorage.setItem('frames');
     
     var token = document.querySelector('meta[name="csrf-token"]');
     console.warn(token.content);
@@ -29,7 +39,7 @@ qwerty.addEventListener("submit", function(e) {
     }));
 
     e.preventDefault();
-}, false);
+}, false);*/
 
 
 

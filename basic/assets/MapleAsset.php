@@ -22,7 +22,7 @@ class MapleAsset extends AssetBundle
         'js/core.js'
     ];
     
-    public $jsOptions = ['position' => \yii\web\View::POS_END];
+    public $jsOptions = ['position' => \yii\web\View::POS_HEAD];
     
     public $depends = [
         //'yii\web\YiiAsset',

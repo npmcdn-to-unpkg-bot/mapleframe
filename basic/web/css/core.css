@@ -24,6 +24,7 @@ a:hover {
     width: 100%;
     margin: 0;
     padding: 0;
+    font-family: Play;
 }
 
 .Mi_wrapper {
@@ -159,4 +160,9 @@ a:hover {
 
 .w100 {
     width: 100%;
+}
+
+.Mi_btn {
+    font-family: Play;
+    font-size: 14px;
 }
