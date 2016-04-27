@@ -3,7 +3,48 @@
     
     var token = document.querySelector('meta[name="csrf-token"]');
     
-    console.info("frames.crud core script called");
+    var checked = [];
+    var inputs_checkbox = document.querySelectorAll('.fr_1_ch');
+    table_layout.addEventListener('change', function(e){
+        var value = e.target.value, position = checked.indexOf(value);
+        if( value === 'all' ) {
+            var condition = e.target.checked;
+            for( var i = 0; i < inputs_checkbox.length; i = i + 1 ) {
+                var item = inputs_checkbox[i];
+                item.checked = condition;
+                if(condition) {
+                    checked.push(item.value);
+                }
+            }
+            if( condition === false ) {
+                checked = [];
+            }
+        } else {
+            // fr_1_all
+            (~position) ? checked.splice(position, 1) : checked.push(e.target.value);
+            fr_1_all.checked = (checked.length === inputs_checkbox.length);
+        }
+        console.warn(checked);
+        qw_di_Qw();
+    });
+    
+    function qw_di_Qw() {
+        switch(checked.length) {
+            case 0:
+                fr_1_btn_edit.setAttribute('disabled', 'disabled');
+                fr_1_btn_delete.setAttribute('disabled', 'disabled');
+                break;
+            case 1:
+                fr_1_btn_edit.removeAttribute('disabled');
+                fr_1_btn_delete.removeAttribute('disabled');
+                break;
+            default:
+                fr_1_btn_edit.setAttribute('disabled', 'disabled');
+                fr_1_btn_delete.removeAttribute('disabled');
+                break;
+        }
+    }
+    
     fr_1_btn_data.addEventListener('click', function(e){
         console.warn('fr_1_btn_data');
         table_layout.classList.add('load');

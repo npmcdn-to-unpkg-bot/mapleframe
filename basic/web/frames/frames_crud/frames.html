@@ -1,124 +1,128 @@
 <div id="fr_1" style="display:inline-block;vertical-align:top;padding:4px;">
     <div style="position:relative;z-index:1;padding:4px;width:810px;" class="Mi_frame">
 
-        <section style="position:relative;box-sizing:border-box;border:1px solid #d7d7d7;max-height:500px;width:500px;padding:0;" class="">
-            <header style="position:absolute;z-index:1;top:0;left:0;height:40px;width:100%;background:rgba(255,0,0,.1);" class="">
-                <h1 style="margin:0 0 10px;font-family:Play;font-size:22px;">Frame List</h1>
+        <section class="Mi_crud_table">
+            
+            <header class="Mi_crud_table__header">
+                <h1 class="Mi_crud_table__title">Frame List</h1>
+                <div class="Mi_btnGroup for_table Mi_crud_table__ctrl">
+                    <button id="fr_1_btn_data" class="Mi_btn">response</button>
+                    <button id="fr_1_btn_add" disabled="disabled" class="Mi_btn">add</button>
+                    <button id="fr_1_btn_edit" disabled="disabled" class="Mi_btn">edit</button>
+                    <button id="fr_1_btn_delete" disabled="disabled" class="Mi_btn">delete</button>
+                </div>
             </header>
-            <div style="box-sizing:border-box;padding:40px 16px;display:block;height:420px;width:100%;background:#f7f7f7;overflow-y:scroll;" class="">
+            
+            <content class="Mi_crud_table__body">
                 <div id="table_layout" class="Mi_table_layout">
-                    <div class="Mi_btnGroup for_table">
-                        <button id="fr_1_btn_data" class="Mi_btn">data</button>
-                        <button id="fr_1_btn_add" disabled="disabled" class="Mi_btn">add</button>
-                        <button id="fr_1_btn_edit" disabled="disabled" class="Mi_btn">edit</button>
-                    </div>
-                    <table class="Mi_table">
+                    
+                    <table style="margin:0;" class="Mi_table">
                         <thead class="Mi_table__head">
                             <tr class="Mi_table__row">
-                                <th class="Mi_table__cell head"></th>
+                                <th class="Mi_table__cell head"><input id="fr_1_all" value="all" type="checkbox"></th>
                                 <th class="Mi_table__cell head">Заголовок</th>
                             </tr>
                         </thead>
                         <tbody id="fr_1_tbody" class="Mi_table__body">
-                            <tr style="display:none;" class="Mi_table__row active">
+                            <tr class="Mi_table__row">
                                 <td class="Mi_table__cell">
-                                    <input type="checkbox">
+                                    <input class="fr_1_ch" value="1" type="checkbox">
                                 </td>
                                 <td class="Mi_table__cell">
                                     <span>Звёздный путь: Фильм</span>
                                 </td>
                             </tr>
-                            <tr class="Mi_table__row active">
+                            <tr class="Mi_table__row">
                                 <td class="Mi_table__cell">
-                                    <input type="checkbox">
+                                    <input class="fr_1_ch" value="2" type="checkbox">
                                 </td>
                                 <td class="Mi_table__cell">
                                     <span>Звёздный путь: Фильм</span>
                                 </td>
                             </tr>
-                            <tr class="Mi_table__row active">
+                            <tr class="Mi_table__row">
                                 <td class="Mi_table__cell">
-                                    <input type="checkbox">
+                                    <input class="fr_1_ch" value="3" type="checkbox">
                                 </td>
                                 <td class="Mi_table__cell">
                                     <span>Звёздный путь: Фильм</span>
                                 </td>
                             </tr>
-                            <tr class="Mi_table__row active">
+                            <tr class="Mi_table__row">
                                 <td class="Mi_table__cell">
-                                    <input type="checkbox">
+                                    <input class="fr_1_ch" value="4" type="checkbox">
                                 </td>
                                 <td class="Mi_table__cell">
                                     <span>Звёздный путь: Фильм</span>
                                 </td>
                             </tr>
-                            <tr class="Mi_table__row active">
+                            <tr class="Mi_table__row">
                                 <td class="Mi_table__cell">
-                                    <input type="checkbox">
+                                    <input class="fr_1_ch" value="5" type="checkbox">
                                 </td>
                                 <td class="Mi_table__cell">
                                     <span>Звёздный путь: Фильм</span>
                                 </td>
                             </tr>
-                            <tr class="Mi_table__row active">
+                            <tr class="Mi_table__row">
                                 <td class="Mi_table__cell">
-                                    <input type="checkbox">
+                                    <input class="fr_1_ch" value="6" type="checkbox">
                                 </td>
                                 <td class="Mi_table__cell">
                                     <span>Звёздный путь: Фильм</span>
                                 </td>
                             </tr>
-                            <tr class="Mi_table__row active">
+                            <tr class="Mi_table__row">
                                 <td class="Mi_table__cell">
-                                    <input type="checkbox">
+                                    <input class="fr_1_ch" value="7" type="checkbox">
                                 </td>
                                 <td class="Mi_table__cell">
                                     <span>Звёздный путь: Фильм</span>
                                 </td>
                             </tr>
-                            <tr class="Mi_table__row active">
+                            <tr class="Mi_table__row">
                                 <td class="Mi_table__cell">
-                                    <input type="checkbox">
+                                    <input class="fr_1_ch" value="8" type="checkbox">
                                 </td>
                                 <td class="Mi_table__cell">
                                     <span>Звёздный путь: Фильм</span>
                                 </td>
                             </tr>
-                            <tr class="Mi_table__row active">
+                            <tr class="Mi_table__row">
                                 <td class="Mi_table__cell">
-                                    <input type="checkbox">
+                                    <input class="fr_1_ch" value="9" type="checkbox">
                                 </td>
                                 <td class="Mi_table__cell">
                                     <span>Звёздный путь: Фильм</span>
                                 </td>
                             </tr>
-                            <tr class="Mi_table__row active">
+                            <tr class="Mi_table__row">
                                 <td class="Mi_table__cell">
-                                    <input type="checkbox">
+                                    <input class="fr_1_ch" value="10" type="checkbox">
                                 </td>
                                 <td class="Mi_table__cell">
                                     <span>Звёздный путь: Фильм</span>
                                 </td>
                             </tr>
-                            <tr class="Mi_table__row active">
+                            <tr class="Mi_table__row">
                                 <td class="Mi_table__cell">
-                                    <input type="checkbox">
+                                    <input class="fr_1_ch" value="11" type="checkbox">
                                 </td>
                                 <td class="Mi_table__cell">
                                     <span>Звёздный путь: Фильм</span>
                                 </td>
                             </tr>
-                            <tr class="Mi_table__row active">
+                            <tr class="Mi_table__row">
                                 <td class="Mi_table__cell">
-                                    <input type="checkbox">
+                                    <input class="fr_1_ch" value="12" type="checkbox">
                                 </td>
                                 <td class="Mi_table__cell">
                                     <span>Звёздный путь: Фильм</span>
                                 </td>
                             </tr>
-                            <tr class="Mi_table__row active">
+                            <tr class="Mi_table__row">
                                 <td class="Mi_table__cell">
-                                    <input type="checkbox">
+                                    <input class="fr_1_ch" value="13" type="checkbox">
                                 </td>
                                 <td class="Mi_table__cell">
                                     <span>Звёздный путь: Фильм</span>
@@ -127,8 +131,9 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <footer style="position:absolute;z-index:1;bottom:0;left:0;height:40px;width:100%;background:rgba(255,0,0,.1);">
+            </content>
+            
+            <footer class="Mi_crud_table__footer">
                 <div class="Mi_btnGroup for_table">
                     <button class="Mi_btn">prev</button>
                     <button class="Mi_btn">1</button>
@@ -137,9 +142,10 @@
                     <button class="Mi_btn">next</button>
                 </div>
             </footer>
+            
         </section>
 
-        <section style="box-sizing:border-box;position:absolute;z-index:1;right:4px;top:4px;padding:8px 16px;width:300px;margin:0 0 10px;border:1px solid #d7d7d7;" class="">
+        <section style="box-sizing:border-box;position:absolute;z-index:1;right:4px;top:4px;padding:8px 16px;width:300px;margin:0 0 10px;border:1px solid #e7e7e7;" class="">
             <h1 style="margin:0 0 10px;font-family:Play;font-size:22px;" class="Gi_h1">Frame</h1>
             <div class="Mi_form_layout">
                 <form class="Mi_form Gi_no_padding" id="frame_form" method="POST">

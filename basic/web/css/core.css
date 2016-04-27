@@ -166,3 +166,63 @@ a:hover {
     font-family: Play;
     font-size: 14px;
 }
+
+
+/** table_crud */
+
+.Mi_crud_table {
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid #e7e7e7;
+    max-height: 500px;
+    width: 500px;
+    padding: 50px 0;
+}
+
+.Mi_crud_table__header {
+    box-sizing: border-box;
+    text-align: right;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid #e7e7e7;
+    height: 50px;
+    width: 100%;
+    padding: 8px;
+}
+
+.Mi_crud_table__body {
+    box-sizing: border-box;
+    padding: 10px;
+    display: block;
+    height: 400px;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.Mi_crud_table__footer {
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    border-top: 1px solid #e7e7e7;
+    padding: 8px;
+    text-align: right;
+}
+
+.Mi_crud_table__title {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 10px 0 0;
+    font-family: Play;
+    font-size: 22px;
+}
+
+.Mi_crud_table__ctrl {
+    display: inline-block;
+    vertical-align: middle;
+}
