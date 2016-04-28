@@ -123,9 +123,7 @@ class SiteController extends Controller
                 $frames[$index]['scripts'] = $scripts;
             }
         }
-        catch(\Exception $e) {
-            
-        }
+        catch(\Exception $e) {}
         $frame_asset->registerAssetFiles($this->view);
         return $this->render('eldamar', [
             'frames' => $frames
