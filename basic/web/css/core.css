@@ -33,10 +33,10 @@ a:hover {
 }
 
 .Mi_header {
-    height: 100px;
+    height: 40px;
     width: 100%;
-    background-color: #e7e7e7;
-    border-bottom: 1px solid #b7b7b7;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d7d7d7;
 }
 
 .Mi_footer {
@@ -46,8 +46,8 @@ a:hover {
     padding: 0;
     height: 100px;
     width: 100%;
-    background-color: #e7e7e7;
-    border-top: 1px solid #b7b7b7;
+    background-color: #f7f7f7;
+    border-top: 1px solid #d7d7d7;
 }
 
 .Mi_container {
@@ -57,7 +57,7 @@ a:hover {
 .Mi_navi {
     height: 100px;
     width: 100%;
-    background-color: #e7e7e7;
+    background-color: #d7d7d7;
 }
 
 .Mi_navi_container {
@@ -163,7 +163,7 @@ a:hover {
 }
 
 .Mi_btn {
-    font-family: Play;
+    /*font-family: Play;*/
     font-size: 14px;
 }
 
@@ -173,10 +173,10 @@ a:hover {
 .Mi_crud_table {
     position: relative;
     box-sizing: border-box;
-    border: 1px solid #e7e7e7;
-    max-height: 500px;
+    border: 1px solid #d7d7d7;
+    max-height: 700px;
     width: 500px;
-    padding: 52px 0;
+    padding: 44px 0;
 }
 
 .Mi_crud_form {
@@ -185,14 +185,47 @@ a:hover {
     box-sizing:border-box;
     right:4px;
     top:4px;
-    padding:8px 16px;
     width:300px;
     margin:0 0 10px;
-    border:1px solid #e7e7e7;
+    border:1px solid #d7d7d7;
     transform: scale(0);
     transition-property: transform;
     transition-duration: .5s;
     transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.Mi_section {
+    padding: 44px 0;
+}
+.Mi_section__header {
+    box-sizing: border-box;
+    text-align: right;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid #d7d7d7;
+    height: 44px;
+    width: 100%;
+    padding: 8px;
+}
+.Mi_section__body {
+    padding: 8px;
+}
+.Mi_section__footer {
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    height: 44px;
+    width: 100%;
+    border-top: 1px solid #d7d7d7;
+    padding: 8px;
+    text-align: right;
+}
+.Mi_section__footer .Mi_btnGroup {
+    margin: 0;
 }
 
 .Mi_crud_form.show {
@@ -209,8 +242,8 @@ a:hover {
     z-index: 1;
     top: 0;
     left: 0;
-    border-bottom: 1px solid #e7e7e7;
-    height: 52px;
+    border-bottom: 1px solid #d7d7d7;
+    height: 44px;
     width: 100%;
     padding: 8px;
 }
@@ -219,7 +252,7 @@ a:hover {
     box-sizing: border-box;
     padding: 10px;
     display: block;
-    height: 394px;
+    height: 594px;
     width: 100%;
     overflow-y: scroll;
 }
@@ -230,9 +263,9 @@ a:hover {
     z-index: 1;
     bottom: 0;
     left: 0;
-    height: 52px;
+    height: 44px;
     width: 100%;
-    border-top: 1px solid #e7e7e7;
+    border-top: 1px solid #d7d7d7;
     padding: 8px;
     text-align: right;
 }

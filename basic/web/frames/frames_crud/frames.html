@@ -1,18 +1,19 @@
 <div id="fr_1" style="display:inline-block;vertical-align:top;padding:4px;">
     <div style="position:relative;z-index:1;padding:4px;width:810px;" class="Mi_frame">
 
-        <section class="Mi_crud_table">
-            
+        <section class="Mi_crud_table Mi_table_section">
+
             <header class="Mi_crud_table__header">
                 <h1 class="Mi_crud_table__title">Frame List</h1>
                 <div class="Mi_btnGroup for_table Mi_crud_table__ctrl">
-                    <button id="fr_1_btn_data" class="Mi_btn">response</button>
-                    <button id="fr_1_btn_add" disabled="disabled" class="Mi_btn">add</button>
-                    <button id="fr_1_btn_edit" disabled="disabled" class="Mi_btn">edit</button>
-                    <button id="fr_1_btn_delete" disabled="disabled" class="Mi_btn">delete</button>
+                    <!-- Mi_btn_hcc:header_crud_controller -->
+                    <button action="response" class="Mi_btn Mi_btn_hcc">response</button>
+                    <button action="create" class="Mi_btn Mi_btn_hcc">create</button>
+                    <button action="edit" disabled="disabled" class="Mi_btn Mi_btn_hcc">edit</button>
+                    <button action="delete" disabled="disabled" class="Mi_btn Mi_btn_hcc">delete</button>
                 </div>
             </header>
-            
+
             <content class="Mi_crud_table__body">
                 <div id="table_layout" class="Mi_table_layout">
                     <table style="margin:0;" class="Mi_table">
@@ -26,7 +27,7 @@
                     </table>
                 </div>
             </content>
-            
+
             <footer class="Mi_crud_table__footer">
                 <div class="Mi_btnGroup for_table">
                     <button class="Mi_btn">prev</button>
@@ -36,14 +37,25 @@
                     <button class="Mi_btn">next</button>
                 </div>
             </footer>
-            
+
         </section>
 
-        <section id="qf_fG_15" class="Mi_crud_form">
-            <h1 style="margin:0 0 10px;font-family:Play;font-size:22px;" class="Gi_h1">Frame</h1>
-            <div id="form_container" class="Mi_form_layout">
-                
-            </div>
+        <section class="Mi_crud_form Mi_form_section Mi_section">
+            <form onSubmit="return false">
+                <header class="Mi_section__header">
+                    <h1 style="margin:0 0 10px;font-family:Play;font-size:22px;" class="Gi_h1">Frame</h1>
+                </header>
+                <div class="Mi_section__body">
+                    <div id="form_container" class="Mi_form_layout"></div>
+                </div>
+                <footer class="Mi_section__footer">
+                    <div class="Mi_btnGroup Mi_submitGroup">
+                        <input action="submit" class="Mi_btn" value="save" type="submit">
+                        <button action="reset" class="Mi_btn">reset</button>
+                        <button action="cancel" class="Mi_btn">cancel</button>
+                    </div>
+                </footer>
+            </form>
         </section>
 
 

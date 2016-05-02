@@ -7,6 +7,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
+use app\models\Frames;
 use app\models\ContactForm;
 use app\assets\MapleAsset;
 use app\assets\FramesAsset;
@@ -95,17 +96,37 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
-    
+
     public function actionFrames() {
         $frames = (new Query())
-            ->select('f.id, f.name, f.description, f.path')
+            ->select('f.id, f.name, f.description, f.path, f.status')
             ->from('{{%frames}} f')
             ->all();
         header('HTTP/1.1 200 OK');
         header('Content-type: application/json; charset=UTF-8');
         echo JSON::encode($frames);
     }
-    
+
+    public function actionFrames2() {
+        $result = [];
+        $input = file_get_contents('php://input');
+        if( !empty($input) ) {
+            $content = JSON::decode($input);
+            $id = (int)$content['id'];
+            $model = ($id === 0)
+                ? new Frames()
+                : Frames::find()->where(['id' => $id])->one();
+            $model->setAttributes($content);
+            if($model->save()) {
+                $result['data'] = $model->getAttributes();
+                $result['success'] = '';
+            } else {
+                $result['errors'] = $model->getErrors();
+            }
+        }
+        echo JSON::encode($result);
+    }
+
     public function actionEldamar() {
         MapleAsset::register($this->view);
         $frame_asset = (new \app\assets\FramesAsset);
@@ -113,8 +134,9 @@ class SiteController extends Controller
         $frames = (new \yii\db\Query())
             ->select('f.id, f.name, f.description, f.path')
             ->from('{{%frames}} f')
+            ->where(['id' => 1])
             ->all();
-        
+
         try {
             foreach($frames as $index => $frame) {
                 $frames[$index]['template'] = file_get_contents(Yii::getAlias('@webroot/' . $frame['path']));
@@ -129,7 +151,7 @@ class SiteController extends Controller
             'frames' => $frames
         ]);
     }
-    
+
     protected function _assetsScripts($frame_scripts) {
         $result = [];
         if(is_array($frame_scripts)) {
@@ -139,7 +161,7 @@ class SiteController extends Controller
         }
         return $result;
     }
-    
+
     protected function _frameScripts($frame_id) {
         return (new \yii\db\Query())
                 ->select('fj.id, fj.frame_id, fj.path, fj.name, fj.description, fj.position, fj.type')
@@ -147,7 +169,7 @@ class SiteController extends Controller
                 ->where('fj.frame_id = :id', [':id'=>$frame_id])
                 ->all();
     }
-    
+
     public function beforeAction($action)
     {
         // ...set `$this->enableCsrfValidation` here based on some conditions...
@@ -157,8 +179,8 @@ class SiteController extends Controller
             $this->enableCsrfValidation = false;
         }*/
         return parent::beforeAction($action);
-    } 
-    
+    }
+
     public function actionQwerty() {
         $content = null;
         $input = file_get_contents('php://input');
