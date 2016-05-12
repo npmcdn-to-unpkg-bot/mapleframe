@@ -51,6 +51,8 @@ a:hover {
 }
 
 .Mi_container {
+    margin: 0 auto;
+    width: 800px;
     padding: 10px 20px;
 }
 

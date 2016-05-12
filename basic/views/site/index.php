@@ -16,7 +16,13 @@ $this->title = 'My Yii Application';
         </div>
     </div>
 
-
+        <?php
+        foreach ($page_content as $i => $part) {
+            echo($part['content']);
+        }
+        ?>
+        
+        <?php /*
         <div class="Mi_row">
             <div class="Mi_cell">
                 <h2 class="Mi_title_ii">Heading</h2>
@@ -49,5 +55,6 @@ $this->title = 'My Yii Application';
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
             </div>
         </div>
+        */?>
 
 </div>

@@ -12,6 +12,7 @@ use app\assets\MapleAsset;
 use app\assets\FramesAsset;
 use yii\helpers\Json;
 use yii\db\Query;
+use yii\web\HttpException;
 
 class SiteController extends Controller
 {
@@ -50,10 +51,37 @@ class SiteController extends Controller
             ],
         ];
     }
+    
+    public function beforeAction($action)
+    {
+        // ...set `$this->enableCsrfValidation` here based on some conditions...
+        // call parent method that will check CSRF if such property is true.
+        /*if ($action->id === 'qwerty') {
+            # code...
+            $this->enableCsrfValidation = false;
+        }*/
+        return parent::beforeAction($action);
+    }
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $page_content = array();
+        $action = Yii::$app->getRequest()->getQueryParam('action');
+        $page = (new Query())
+            ->select('p.id, p.name, p.description, p.path, p.alias')
+            ->from('{{%pages}} p')
+            ->where('p.path = :path', [':path'=>$action])
+            ->one();
+        if($page) {
+            $page_content = (new Query())
+                ->select('p.id, p.page_id, p.title, p.description, p.content')
+                ->from('{{%pages_contents}} p')
+                ->where('p.page_id = :page_id', [':page_id'=>$page['id']])
+                ->all();
+        } else {
+            throw new HttpException( 404, 'Page not found');
+        }
+        return $this->render('index', ['page_content'=>$page_content]);
     }
 
     public function actionLogin()
@@ -96,6 +124,10 @@ class SiteController extends Controller
         return $this->render('about');
     }
     
+    public function actionCorporative() {
+        return $this->render('corporative');
+    }
+    
     public function actionFrames() {
         $frames = (new Query())
             ->select('f.id, f.name, f.description, f.path')
@@ -105,12 +137,12 @@ class SiteController extends Controller
         header('Content-type: application/json; charset=UTF-8');
         echo JSON::encode($frames);
     }
-    
+        
     public function actionEldamar() {
         MapleAsset::register($this->view);
         $frame_asset = (new \app\assets\FramesAsset);
 
-        $frames = (new \yii\db\Query())
+        $frames = (new Query())
             ->select('f.id, f.name, f.description, f.path')
             ->from('{{%frames}} f')
             ->all();
@@ -148,16 +180,7 @@ class SiteController extends Controller
                 ->all();
     }
     
-    public function beforeAction($action)
-    {
-        // ...set `$this->enableCsrfValidation` here based on some conditions...
-        // call parent method that will check CSRF if such property is true.
-        /*if ($action->id === 'qwerty') {
-            # code...
-            $this->enableCsrfValidation = false;
-        }*/
-        return parent::beforeAction($action);
-    } 
+    
     
     public function actionQwerty() {
         $content = null;
