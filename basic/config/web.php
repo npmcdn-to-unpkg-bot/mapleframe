@@ -57,6 +57,11 @@ $config = [
             'enableStrictParsing' => true,
             'rules' => [
                 [
+                    'pattern' => '/',
+                    'route' => 'site/index',
+                    'suffix' => '.html'
+                ],
+                [
                     'pattern' => '<action>',
                     'route' => 'site/index',
                     'suffix' => '.html'

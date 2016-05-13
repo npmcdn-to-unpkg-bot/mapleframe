@@ -13,6 +13,7 @@ use app\assets\FramesAsset;
 use yii\helpers\Json;
 use yii\db\Query;
 use yii\web\HttpException;
+use app\components\Core;
 
 class SiteController extends Controller
 {
@@ -66,22 +67,28 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $page_content = array();
+        $page_template = 'index';
         $action = Yii::$app->getRequest()->getQueryParam('action');
-        $page = (new Query())
-            ->select('p.id, p.name, p.description, p.path, p.alias')
-            ->from('{{%pages}} p')
-            ->where('p.path = :path', [':path'=>$action])
-            ->one();
-        if($page) {
-            $page_content = (new Query())
-                ->select('p.id, p.page_id, p.title, p.description, p.content')
-                ->from('{{%pages_contents}} p')
-                ->where('p.page_id = :page_id', [':page_id'=>$page['id']])
-                ->all();
-        } else {
-            throw new HttpException( 404, 'Page not found');
+        if(empty($action) === false) {
+            $page_template = 'page';
+            $page = (new Query())
+                ->select('p.id, p.name, p.description, p.path, p.alias')
+                ->from('{{%pages}} p')
+                ->where('p.path = :path', [':path'=>$action])
+                ->one();
+            Core::pre($page);
+            if($page) {
+                $page_content = (new Query())
+                    ->select('p.id, p.page_id, p.title, p.description, p.content')
+                    ->from('{{%pages_contents}} p')
+                    ->where('p.page_id = :page_id', [':page_id'=>$page['id']])
+                    ->all();
+            } else {
+                var_dump(empty($action));
+                //throw new HttpException( 404, 'Page not found');
+            }
         }
-        return $this->render('index', ['page_content'=>$page_content]);
+        return $this->render($page_template, ['page_content'=>$page_content]);
     }
 
     public function actionLogin()

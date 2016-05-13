@@ -252,3 +252,15 @@ a:hover {
     vertical-align: middle;
 }
 
+.Mi_pre_layout {
+    padding: 10px;
+}
+
+.Mi_pre {
+    display: inline-block;
+    vertical-align: top;
+    padding: 20;
+    border: 1px solid #e7e7e7;
+    font-family: 'Play';
+    letter-spacing: 0.05em;
+}
