@@ -53,7 +53,7 @@ class SiteController extends Controller
             ],
         ];
     }
-    
+
     public function beforeAction($action)
     {
         // ...set `$this->enableCsrfValidation` here based on some conditions...
@@ -85,8 +85,8 @@ class SiteController extends Controller
                     ->where('p.page_id = :page_id', [':page_id'=>$page['id']])
                     ->all();
             } else {
-                var_dump(empty($action));
-                //throw new HttpException( 404, 'Page not found');
+                //var_dump(empty($action));
+                throw new HttpException( 404, 'Page not found');
             }
         }
         return $this->render($page_template, ['page_content'=>$page_content]);
@@ -131,11 +131,11 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
-    
+
     public function actionCorporative() {
         return $this->render('corporative');
     }
-    
+
     public function actionFrames() {
         $frames = (new Query())
             ->select('f.id, f.name, f.description, f.path, f.status')
@@ -208,18 +208,7 @@ class SiteController extends Controller
                 ->where('fj.frame_id = :id', [':id'=>$frame_id])
                 ->all();
     }
-    
-    public function beforeAction($action)
-    {
-        // ...set `$this->enableCsrfValidation` here based on some conditions...
-        // call parent method that will check CSRF if such property is true.
-        /*if ($action->id === 'qwerty') {
-            # code...
-            $this->enableCsrfValidation = false;
-        }*/
-        return parent::beforeAction($action);
-    } 
-    
+
     public function actionQwerty() {
         $content = null;
         $input = file_get_contents('php://input');
