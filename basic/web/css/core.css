@@ -20,10 +20,11 @@ a:hover {
 }
 
 .Mi_body {
+    box-sizing: border-box;
     height: 100%;
     width: 100%;
     margin: 0;
-    padding: 0;
+    padding: 40px 0;
     font-family: Play;
 }
 
@@ -33,6 +34,10 @@ a:hover {
 }
 
 .Mi_header {
+    position: fixed;
+    z-index: 9998;
+    left: 0;
+    top: 0;
     height: 40px;
     width: 100%;
     background-color: #f7f7f7;
@@ -40,18 +45,19 @@ a:hover {
 }
 
 .Mi_footer {
-    position: relative;
-    z-index: 1;
-    margin: -101px 0 0 0;
+    position: fixed;
+    z-index: 9998;
+    left: 0;
+    bottom: 0;
     padding: 0;
-    height: 100px;
+    height: 40px;
     width: 100%;
     background-color: #f7f7f7;
     border-top: 1px solid #d7d7d7;
 }
 
 .Mi_container {
-    padding: 10px 20px;
+    padding: 15px;
 }
 
 .Mi_navi {
@@ -174,8 +180,8 @@ a:hover {
     position: relative;
     box-sizing: border-box;
     border: 1px solid #d7d7d7;
-    max-height: 700px;
-    width: 500px;
+    height: 400px;
+    width: 505px;
     padding: 44px 0;
 }
 
@@ -183,10 +189,10 @@ a:hover {
     position:absolute;
     z-index:1;
     box-sizing:border-box;
-    right:4px;
-    top:4px;
-    width:300px;
-    margin:0 0 10px;
+    right:0;
+    top:0;
+    min-height: 400px;
+    width:380px;
     border:1px solid #d7d7d7;
     transform: scale(0);
     transition-property: transform;
@@ -252,9 +258,8 @@ a:hover {
     box-sizing: border-box;
     padding: 10px;
     display: block;
-    height: 594px;
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .Mi_crud_table__footer {
@@ -283,3 +288,22 @@ a:hover {
     vertical-align: middle;
 }
 
+.Mi_btnGroup {
+    text-align: right;
+}
+
+.Mi_btnGroup .Mi_btn {
+    float: none;
+}
+
+.Mi_frame_layout {
+    width:100%;
+}
+
+.Mi_frame {
+    box-sizing:border-box;
+    position:relative;
+    z-index:1;
+    margin:0 auto;
+    width:900px;
+}
