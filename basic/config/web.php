@@ -59,12 +59,12 @@ $config = [
                 [
                     'pattern' => '/',
                     'route' => 'site/index',
-                    'suffix' => '.html'
+                    'suffix' => ''
                 ],
                 [
                     'pattern' => '<action>',
                     'route' => 'site/index',
-                    'suffix' => '.html'
+                    'suffix' => ''
                 ],
                 [
                     'pattern' => '<controller>/<action>/<id:\d+>',

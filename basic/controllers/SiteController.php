@@ -73,12 +73,13 @@ class SiteController extends Controller
         if(empty($action) === false) {
             $page_template = 'page';
             $page = (new Query())
-                ->select('p.id, p.name, p.description, p.path, p.alias')
+                ->select('p.id, p.name, p.description, p.path, p.alias, p.template')
                 ->from('{{%pages}} p')
                 ->where('p.path = :path', [':path'=>$action])
                 ->one();
-            Core::pre($page);
             if($page) {
+                $this->layout = '@app/views/layouts/angular.php';
+                $page_template = $page['template'];
                 $page_content = (new Query())
                     ->select('p.id, p.page_id, p.title, p.description, p.content')
                     ->from('{{%pages_contents}} p')

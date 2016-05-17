@@ -10,8 +10,8 @@ RewriteCond %{REQUEST_FILENAME} !-d
 # otherwise forward it to index.php
 RewriteRule . index.php
 
-RewriteCond %{REQUEST_URI} (.*/[^/.]+)($|\?)
-RewriteRule .* %1.html [R=301,L]
-RewriteRule ^(.*)/$ /$1.html [R=301,L]
+#RewriteCond %{REQUEST_URI} (.*/[^/.]+)($|\?)
+#RewriteRule .* %1.html [R=301,L]
+#RewriteRule ^(.*)/$ /$1.html [R=301,L]
 
 AddDefaultCharset utf-8

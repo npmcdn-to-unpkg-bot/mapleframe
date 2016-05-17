@@ -22,5 +22,6 @@ class m160512_095324_create_table_pages_contents extends Migration
     public function down()
     {
         $this->dropTable('{{%pages_contents}}');
+        return true;
     }
 }

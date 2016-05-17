@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+.Gi_clear {}
+.Gi_clear:after {
+    content: '';
+    display: table;
+}
+
+.Gi_text_align_center {
+    text-align: center;
+}
+
+.Mia_body {
+    padding: 0;
+    overflow: hidden;
+}
+
+.Mia_header {
+    position: fixed;
+    height: 40px;
+}
+
+.Mia_container {
+    box-sizing: border-box;
+    min-height: 500px;
+    width: 100%;
+}
+
+.Mia_wrapper {
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    padding: 80px 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.Mia_wrapper.resize:before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255,255,255,.9);
+}
+
+.Mia_navi {
+    display: inline-block;
+    min-height: 60px;
+    padding: 10px;
+}
+
+.Mia_navi__elem {
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 7px 0 0;
+    border: 1px solid #d7d7d7;
+    height: 60px;
+    width: 60px;
+    background: #f7f7f7;
+    cursor: pointer;
+}
+
+.Mia_navi__elem.emblem {
+    height: 70px;
+    width: 70px;
+}
+
+.Mia_navi__elem.active {
+    background-color: #ffc;
+}

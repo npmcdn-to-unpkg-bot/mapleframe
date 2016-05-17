@@ -25,7 +25,6 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="Mi_wrapper">
-    
     <header class="Mi_header"></header>
     <?php
     /*
@@ -95,10 +94,10 @@ AppAsset::register($this);
 </div>
 
 <footer class="Mi_footer">
-    <div class="Mi_container">
+    
         <p class="Mi_pph pull-left">&copy; My Company <?= date('Y') ?></p>
         <p class="Mi_pph pull-right"><?= Yii::powered() ?></p>
-    </div>
+    
 </footer>
 
 <?php $this->endBody() ?>
