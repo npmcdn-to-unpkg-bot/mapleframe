@@ -17,6 +17,10 @@ navi.addEventListener('click', function(e) {
     }
 });
 
+wrapper.addEventListener('scroll', function(e) {
+    console.log('e', e);
+});
+
 window.addEventListener('resize', function(e) {
     width = document.body.offsetWidth;
     wrapper.scrollLeft = (width * active_index);
