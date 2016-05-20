@@ -25,11 +25,11 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
     <header class="Mi_header Mia_header Gi_text_align_center">
         <ul id="navi" class="Mia_navi Gi_clear">
-            <li data-index="0" class="Mia_navi__elem active"></li>
-            <li data-index="1" class="Mia_navi__elem"></li>
-            <li id="qwerty" class="Mia_navi__elem emblem"></li>
-            <li data-index="2" class="Mia_navi__elem"></li>
-            <li data-index="3" class="Mia_navi__elem"></li>
+            <li data-index="0" class="Mia_navi__elem active"></li><!--
+            --><li data-index="1" class="Mia_navi__elem"></li><!--
+            --><li id="qwerty" class="Mia_navi__elem emblem"></li><!--
+            --><li data-index="2" class="Mia_navi__elem"></li><!--
+            --><li data-index="3" class="Mia_navi__elem"></li>
         </ul>
     </header>
     <div id="wrapper" class="Mi_wrapper Mia_wrapper Gi_clear">
@@ -39,7 +39,14 @@ AppAsset::register($this);
                     <td style="width:25%;">
                         <div class="Mi_container Mia_container">
                             <h2>Angular page one</h2>
-                            <h4>description</h4>
+                            <h4 style="margin:0 0 30px;">description</h4>
+                            <ul style="list-style:none;">
+                                <li><a id="_piw" href="" class="">Отправить сообщение Worker</a></li>
+                                <li><a class="">Отправить Worker</a></li>
+                                <li><a class="">Cообщение Worker</a></li>
+                                <li><a class="">Отправить</a></li>
+                                <li><a class="">Cообщение</a></li>
+                            </ul>
                             <?//= $content ?>
                         </div>
                     </td>

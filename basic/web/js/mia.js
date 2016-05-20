@@ -1,46 +1,98 @@
 "use strict";
 
 var width = document.body.offsetWidth;
-var old_width = document.body.offsetWidth;
-var naviq = navi.querySelectorAll('.Mia_navi__elem');
 
-var active_index = 0;
-var raf = null;
+var uncompleted_path = 0; // appears if animation stopped
+var active_index = 0; // Next expected active page
+var raf = null; // R_equest A_nimation F_ragment
+var animation_active = false;
+const BASE_ANIMATION_DURATION = 250;
+
+var navi_MC = {
+    html_collection: navi.querySelectorAll('.Mia_navi__elem'),
+    clear_active_condition: function() {
+        for( var i = 0; i < this.html_collection.length; i = i + 1 ) {
+            this.html_collection[i].classList.remove('active');
+        }
+    }
+};
+
 navi.addEventListener('click', function(e) {
     if(e.target.classList.contains('Mia_navi__elem')) {
         if(!e.target.classList.contains('emblem')) {
             cancelAnimationFrame( raf );
-            var uncompleted_path = (active_index * width) - wrapper.scrollLeft;        
-            var current_index = Number( e.target.getAttribute('data-index') ), scroll_path = 0;
-            
-            if( current_index !== active_index ) {
-                scroll_path = ((current_index - active_index) * width) + uncompleted_path;
-                active_index = current_index;
-                for( var i = 0; i < naviq.length; i = i + 1 ) {
-                    naviq[i].classList.remove('active');
+            var current_index = Number( e.target.getAttribute('data-index') ), expected_length_path = 0;
+            animation_active = (current_index === active_index) ? !animation_active : true ;
+            if( animation_active ) {
+                uncompleted_path = (active_index * width) - wrapper.scrollLeft;
+                expected_length_path = ((current_index - active_index) * width) + uncompleted_path;
+                if( expected_length_path !== 0 ) {
+                    active_index = current_index;
+                    navi_MC.clear_active_condition();
+                    e.target.classList.add('active');
+                    var start_scroll_position = wrapper.scrollLeft;
+                    var duration = dinamic_duration( width, expected_length_path );
+                    
+                    mapleAnimateProcessor({
+                        duration: duration,
+                        draw: function( progress ) {
+                            var parh = ~~(start_scroll_position + (expected_length_path * progress));
+                            wrapper.scrollLeft = parh;
+                        },
+                        timing: linear
+                    }, function(){
+                        animation_active = false;
+                        content_loading();
+                        console.warn('animation is complete', raf);
+                    });
+                    
                 }
-                e.target.classList.add('active');
-                var start_scroll_position = wrapper.scrollLeft;
-                            
-                mapleAnimateProcessor({
-                    duration: 400,
-                    draw: function( progress ) {
-                        console.log('draw');
-                        var parh = ~~(start_scroll_position + (scroll_path * progress));
-                        wrapper.scrollLeft = parh;
-                    },
-                    timing: linear
-                }, function(){
-                    console.warn('animation is complete');
-                });
-            
             }
         }
     }
-    function animmation_path( start_index, stop_index ) {
-        return (stop_index - start_index) * old_width;
+    
+    function dinamic_duration(width, path_length) {
+        return Math.abs(path_length) < width 
+            ? ~~(Math.abs(path_length / width) * BASE_ANIMATION_DURATION) 
+            : BASE_ANIMATION_DURATION;
     }
 });
+
+window.onmessage = function(e) {
+    console.log('window.onmessage :: ', e.data);
+}
+
+var worker = null;
+var local_worker = new window.Worker('/js/local.worker.js');
+
+local_worker.addEventListener('message', function(e) {
+    console.warn( performance.now() );
+    console.log( 'Это глобальный поток. Обработанные данные получены.' );
+});
+
+_piw.addEventListener('click', function(e) {
+    console.warn( performance.now() );
+    console.log( 'Локальный поток, прием. Нужны данные.' );
+    local_worker.postMessage('[Данные]');
+    e.preventDefault();
+});
+
+var flag = true;
+function content_loading() {
+    console.log( "active_index :: ", active_index );
+    /*worker = new window.Worker('js/core.page.js');
+    worker.onmessage = function(e) {
+        console.log('worker.onmessage', e.data);
+    }*/
+    /*if( flag ) {
+        var script = document.createElement('script');
+        script.src = "js/core.page.js";
+        script.id = 'page_1';
+        console.log( "script", script );
+        document.body.appendChild( script );
+        flag = false;
+    }*/
+}
 
 function linear(timeFraction) {
     return timeFraction;
@@ -91,34 +143,22 @@ window.addEventListener('resize', function(e) {
     wrapper.scrollLeft = (width * active_index);
 });
 
-
-
 function mapleAnimateProcessor(options, callback) {
     var start = performance.now();
-
     raf = requestAnimationFrame( animate );
-
     function animate(time) {
         var timeFraction = (time - start) / options.duration;
         if (timeFraction > 1) timeFraction = 1;
         if (timeFraction < 0) timeFraction = 0;
 
-        //console.warn( "timeFraction :: ", ~~(timeFraction.toFixed(2) * 100), "%" );
-
         // текущее состояние анимации
         var progress = options.timing( timeFraction );
-        //console.log( "progress", progress );
-        //
         options.draw( progress );
-
         if (timeFraction < 1) {
             raf = requestAnimationFrame( animate );
         } else {
             callback && callback.constructor === Function && callback();
         }
-
-
-
     }
 }
 
