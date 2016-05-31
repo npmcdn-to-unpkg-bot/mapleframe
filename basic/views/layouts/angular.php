@@ -6,7 +6,7 @@
 use yii\helpers\Html;
 use app\assets\AppAsset;
 
-AppAsset::register($this);
+//AppAsset::register($this);
 
 ?>
 <?php $this->beginPage() ?>
@@ -17,6 +17,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?= Html::csrfMetaTags() ?>
     <?php $this->head() ?>
+    <link rel="stylesheet" href="<?php echo Yii::getAlias('@web/css/core.css'); ?>">
     <link rel="stylesheet" href="<?php echo Yii::getAlias('@web/css/angular.css'); ?>">
    <?php /*<script src="<?php echo Yii::getAlias('@web/js/angular/1.5.5/angular.min.js'); ?>"></script>
    <script src="<?php echo Yii::getAlias('@web/js/angular/1.5.5/angular-route.min.js'); ?>"></script> */?>

@@ -7,7 +7,7 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
-        'assetManager' => [
+        /*'assetManager' => [
             'bundles' => [
                 'yii\web\JqueryAsset' => [
                     'js'=>[]
@@ -19,7 +19,7 @@ $config = [
                     'css' => [],
                 ],
             ],
-        ],
+        ],*/
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'VowvXitAPRmHo7NK9d9wVxxfW-SRnMnP',
@@ -62,7 +62,7 @@ $config = [
                     'suffix' => ''
                 ],
                 [
-                    'pattern' => '<action>',
+                    'pattern' => '<action:[\w\-]+>',
                     'route' => 'site/index',
                     'suffix' => ''
                 ],
@@ -74,12 +74,12 @@ $config = [
                 [
                     'pattern' => '<controller>/<action>',
                     'route' => '<controller>/<action>',
-                    'suffix' => '.html'
+                    'suffix' => ''
                 ],
                 [
                     'pattern' => '<module>/<controller>/<action>',
                     'route' => '<module>/<controller>/<action>',
-                    'suffix' => '.html'
+                    'suffix' => ''
                 ],
                 [
                     'pattern' => '<module>/<controller>/<action>/<id:\d+>',
