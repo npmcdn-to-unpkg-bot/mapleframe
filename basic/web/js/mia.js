@@ -136,7 +136,8 @@ var bounceEaseOut = makeEaseOut(bounce);
 /*
 wrapper.addEventListener('scroll', function(e) {
     console.log('e', e);
-});*/
+});
+*/
 
 window.addEventListener('resize', function(e) {
     width = document.body.offsetWidth;
