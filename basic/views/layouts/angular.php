@@ -7,14 +7,13 @@ use yii\helpers\Html;
 use app\assets\AppAsset;
 
 //AppAsset::register($this);
-
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html class="Mi_scroll" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?php echo $this->title; ?></title>
     <?= Html::csrfMetaTags() ?>
     <?php $this->head() ?>
     <link rel="stylesheet" href="<?php echo Yii::getAlias('@web/css/core.css'); ?>">

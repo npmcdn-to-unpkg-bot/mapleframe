@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.MiG__t {
+    font-size: 18px;
+}
+
+::selection {
+    background-color: #e7e77e;
+}

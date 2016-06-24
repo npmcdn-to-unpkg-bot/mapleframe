@@ -65,6 +65,12 @@ class SiteController extends Controller
         return parent::beforeAction($action);
     }
 
+    public function actionAngular() {
+        $this->layout = '@app/views/layouts/angular_only.php';
+        $this->view->title = 'Super Calculator';
+        return $this->render('angular_only');
+    }
+
     public function actionIndex()
     {
         $page_content = array();
@@ -127,7 +133,7 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
-    
+
     public function actionTest() {
         echo JSON::encode([
             "id" => "1",
