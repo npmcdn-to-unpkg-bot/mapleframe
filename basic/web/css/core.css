@@ -25,7 +25,8 @@ a:hover {
     width: 100%;
     margin: 0;
     padding: 40px 0;
-    font-family: Play;
+    font-family: Garamond, Play;
+    font-size: 18px;
 }
 
 .Mi_wrapper {
@@ -57,8 +58,9 @@ a:hover {
 }
 
 .Mi_container {
+    box-sizing: border-box;
     margin: 0 auto;
-    width: 800px;
+    width: 640px;
     padding: 10px 20px;
 }
 

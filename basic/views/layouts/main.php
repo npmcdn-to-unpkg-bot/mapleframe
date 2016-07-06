@@ -15,10 +15,10 @@ AppAsset::register($this);
 <!DOCTYPE html>
 <html class="Mi_scroll" lang="<?= Yii::$app->language ?>">
 <head>
+    <title><?= $this->title; ?></title>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
 <body class="Mi_body">
@@ -91,13 +91,12 @@ AppAsset::register($this);
         ]) ?>
         <?= $content ?>
     </div>
+
 </div>
 
 <footer class="Mi_footer">
-    
-        <p class="Mi_pph pull-left">&copy; My Company <?= date('Y') ?></p>
-        <p class="Mi_pph pull-right"><?= Yii::powered() ?></p>
-    
+    <p class="Mi_pph pull-left">&copy; My Company <?= date('Y') ?></p>
+    <p class="Mi_pph pull-right"><?= Yii::powered() ?></p>
 </footer>
 
 <?php $this->endBody() ?>

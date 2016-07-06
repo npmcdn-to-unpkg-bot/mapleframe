@@ -67,12 +67,12 @@ $config = [
                     'suffix' => ''
                 ],
                 [
-                    'pattern' => '<controller>/<action>/<id:\d+>',
+                    'pattern' => '<controller>/<action>',
                     'route' => '<controller>/<action>',
                     'suffix' => ''
                 ],
                 [
-                    'pattern' => '<controller>/<action>',
+                    'pattern' => '<controller>/<action>/<id:\d+>',
                     'route' => '<controller>/<action>',
                     'suffix' => ''
                 ],

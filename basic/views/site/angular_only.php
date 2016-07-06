@@ -16,9 +16,6 @@
             <div>{{ person.name }}</div>
             <div ng-bind="person.email"></div>
         </div>
-
-        
-
     </div>
 
 </div>

@@ -2,20 +2,14 @@
 <?php
 
 /* @var $this yii\web\View */
-
 $this->registerJsFile(Yii::getAlias('@web/js/page.js', $this::POS_END));
-
-
-$this->title = 'My Yii Application';
 ?>
 <div class="site-index">
 
-    <div class="Mi_row">
+    <div style="display:none;" class="Mi_row">
         <div class="Mi_cell">
             <h1 class="Mi_title_i">Congratulations!</h1>
-
             <p class="Mi_pph lead">You have successfully created your Yii-powered application.</p>
-            
             <p><a id="btn1" href="" class="btn btn-lg btn-success">Get started with Yii</a></p>
         </div>
     </div>

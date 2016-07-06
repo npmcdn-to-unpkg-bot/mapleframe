@@ -15,9 +15,12 @@ use yii\helpers\Json;
 use yii\db\Query;
 use yii\web\HttpException;
 use app\components\Core;
+use yii\web\View;
 
 class SiteController extends Controller
 {
+    //public $layout = '@app/views/layouts/main.php';
+    
     public function behaviors()
     {
         return [
@@ -54,22 +57,23 @@ class SiteController extends Controller
         ];
     }
 
-    public function beforeAction($action)
+    /*public function beforeAction($action)
     {
         // ...set `$this->enableCsrfValidation` here based on some conditions...
         // call parent method that will check CSRF if such property is true.
-        /*if ($action->id === 'qwerty') {
+        if ($action->id === 'qwerty') {
             # code...
             $this->enableCsrfValidation = false;
-        }*/
+        }
         return parent::beforeAction($action);
     }
-
+     */
     public function actionAngular() {
-        $this->layout = '@app/views/layouts/angular_only.php';
+        $this->layout = '@app/views/layouts/angular.php';
         $this->view->title = 'Super Calculator';
-        return $this->render('angular_only');
+        return $this->render('angular');
     }
+
 
     public function actionIndex()
     {
@@ -79,12 +83,29 @@ class SiteController extends Controller
         if(empty($action) === false) {
             $page_template = 'page';
             $page = (new Query())
-                ->select('p.id, p.name, p.description, p.path, p.alias, p.template')
+                ->select([
+                    'p.id',
+                    'p.name',
+                    'p.path',
+                    'p.alias',
+                    'p.template',
+                    'p.meta_title',
+                    'p.description',
+                    'p.meta_keywords',
+                    'p.meta_description',
+                ])
                 ->from('{{%pages}} p')
                 ->where('p.path = :path', [':path'=>$action])
                 ->one();
             if($page) {
-                $this->layout = '@app/views/layouts/angular.php';
+                Yii::$app->view->registerMetaTag([
+                    'name' => 'description',
+                    'content' => $page['description'],
+                ]);
+                Yii::$app->view->registerMetaTag([
+                    'name' => 'keyword',
+                    'content' => $page['meta_keywords'],
+                ]);
                 $page_template = $page['template'];
                 $page_content = (new Query())
                     ->select('p.id, p.page_id, p.title, p.description, p.content')
@@ -92,12 +113,41 @@ class SiteController extends Controller
                     ->where('p.page_id = :page_id', [':page_id'=>$page['id']])
                     ->all();
             } else {
-                //var_dump(empty($action));
-                throw new HttpException( 404, 'Page not found');
+                throw new HttpException( 404, 'Page not found' );
             }
         }
         return $this->render($page_template, ['page_content'=>$page_content]);
     }
+
+    public function init() {
+
+        /*
+        $this->view->on(View::EVENT_BEFORE_RENDER, function ($event) {
+            Core::pre( View::EVENT_BEFORE_RENDER );
+        });
+
+        $this->view->on(View::EVENT_AFTER_RENDER, function ($event) {
+            Core::pre( View::EVENT_AFTER_RENDER );
+        });
+
+        $this->view->on(View::EVENT_END_BODY, function ($event) {
+            Core::pre( View::EVENT_END_BODY );
+        });
+
+        $this->view->on(View::EVENT_BEGIN_BODY, function ($event) {
+            Core::pre( View::EVENT_BEGIN_BODY );
+        });
+
+        $this->view->on(View::EVENT_BEGIN_PAGE, function ($event) {
+            Core::pre( View::EVENT_BEGIN_PAGE );
+        });
+
+        $this->view->on(View::EVENT_END_PAGE, function ($event) {
+            Core::pre( View::EVENT_END_PAGE );
+        });
+        */
+    }
+
 
     public function actionLogin()
     {
@@ -109,6 +159,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }
+        
         return $this->render('login', [
             'model' => $model,
         ]);
@@ -117,7 +168,6 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
         return $this->goHome();
     }
 
