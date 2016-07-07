@@ -31,7 +31,7 @@ use app\assets\AppAsset;
             --><li data-index="2" class="Mia_navi__elem"></li><!--
             --><li data-index="3" class="Mia_navi__elem"></li>
         </ul>
-    </header>
+    </header> 
     <div id="wrapper" class="Mi_wrapper Mia_wrapper Gi_clear">
         <div style="width:400%;height:100%;">
             <table style="width:100%;">
@@ -41,7 +41,7 @@ use app\assets\AppAsset;
                             <h2>Angular page one</h2>
                             <h4 style="margin:0 0 30px;">description</h4>
                             <ul style="list-style:none;">
-                                <li><a id="_piw" href="" class="">Отправить сообщение Worker</a></li>
+                                <li><a class="">Отправить сообщение Worker</a></li>
                                 <li><a class="">Отправить Worker</a></li>
                                 <li><a class="">Cообщение Worker</a></li>
                                 <li><a class="">Отправить</a></li>
@@ -70,21 +70,7 @@ use app\assets\AppAsset;
                     </td>
                 </tr>
             </table>
-        <div>
-        <!-- 
-        <div class="Mi_container Mia_container">
-            <h2>Angular page two</h2>
-            <h4>description</h4>
-        </div>
-        <div class="Mi_container Mia_container">
-            <h2>Angular page tree</h2>
-            <h4>description</h4>
-        </div>
-        <div class="Mi_container Mia_container">
-            <h2>Angular page four</h2>
-            <h4>description</h4>
-        </div>-->
-        
+        <div>        
     </div>
     <footer style="display:none;" class="Mi_footer"></footer>
 <?php $this->endBody() ?>

@@ -56,8 +56,10 @@ navi.addEventListener('click', function(e) {
             ? ~~(Math.abs(path_length / width) * BASE_ANIMATION_DURATION) 
             : BASE_ANIMATION_DURATION;
     }
+
 });
 
+/*
 window.onmessage = function(e) {
     console.log('window.onmessage :: ', e.data);
 }
@@ -75,23 +77,11 @@ _piw.addEventListener('click', function(e) {
     console.log( 'Локальный поток, прием. Нужны данные.' );
     local_worker.postMessage('[Данные]');
     e.preventDefault();
-});
+});*/
 
 var flag = true;
 function content_loading() {
     console.log( "active_index :: ", active_index );
-    /*worker = new window.Worker('js/core.page.js');
-    worker.onmessage = function(e) {
-        console.log('worker.onmessage', e.data);
-    }*/
-    /*if( flag ) {
-        var script = document.createElement('script');
-        script.src = "js/core.page.js";
-        script.id = 'page_1';
-        console.log( "script", script );
-        document.body.appendChild( script );
-        flag = false;
-    }*/
 }
 
 function linear(timeFraction) {
@@ -133,11 +123,6 @@ function elastic(x, timeFraction) {
 }
 
 var bounceEaseOut = makeEaseOut(bounce);
-/*
-wrapper.addEventListener('scroll', function(e) {
-    console.log('e', e);
-});
-*/
 
 window.addEventListener('resize', function(e) {
     width = document.body.offsetWidth;
@@ -151,8 +136,6 @@ function mapleAnimateProcessor(options, callback) {
         var timeFraction = (time - start) / options.duration;
         if (timeFraction > 1) timeFraction = 1;
         if (timeFraction < 0) timeFraction = 0;
-
-        // текущее состояние анимации
         var progress = options.timing( timeFraction );
         options.draw( progress );
         if (timeFraction < 1) {
@@ -162,17 +145,3 @@ function mapleAnimateProcessor(options, callback) {
         }
     }
 }
-
-/*
-mapleAnimateProcessor({
-    duration: 1000,
-    draw: function( x, progress ) {
-        var persent = progress;
-        element.style.transform = "scale(" + persent + ")";
-    }.bind( null, 1 ),
-    timing: function( timeFraction ) {
-        var progress = 1 - timeFraction;
-        return progress > 0.5 ? progress : 0.5 ;
-    }
-});
-*/
