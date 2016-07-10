@@ -20,7 +20,7 @@ use yii\web\View;
 class SiteController extends Controller
 {
     //public $layout = '@app/views/layouts/main.php';
-    
+
     public function behaviors()
     {
         return [
@@ -69,9 +69,9 @@ class SiteController extends Controller
     }
      */
     public function actionAngular() {
-        $this->layout = '@app/views/layouts/angular.php';
+        $this->layout = '@app/views/layouts/angular_only.php';
         $this->view->title = 'Super Calculator';
-        return $this->render('angular');
+        return $this->render('angular_only');
     }
 
 
@@ -159,7 +159,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }
-        
+
         return $this->render('login', [
             'model' => $model,
         ]);

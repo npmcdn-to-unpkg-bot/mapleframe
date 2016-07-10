@@ -7,3 +7,10 @@
 ::selection {
     background-color: #e7e77e;
 }
+
+.ngMapleFactory {
+    display: inline-block;
+    vertical-align: top;
+    padding: 7px 14px;
+    border: 1px solid #e7e7e7;
+}

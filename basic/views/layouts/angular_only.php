@@ -15,9 +15,10 @@ use app\assets\AppAsset;
     <?php $this->head() ?>
     <link rel="stylesheet" href="<?php echo Yii::getAlias('@web/css/core.css'); ?>">
     <link rel="stylesheet" href="<?php echo Yii::getAlias('@web/css/angular_only.css'); ?>">
+    <script src="<?php echo Yii::getAlias('@web/js/functions.js'); ?>"></script>
     <script src="<?php echo Yii::getAlias('@web/js/angular/1.5.5/angular.min.js'); ?>"></script>
+    <?php /*<script src="<?php echo Yii::getAlias('@web/js/angular/1.5.5/angular-route.js'); ?>"></script>*/ ?>
     <script src="<?php echo Yii::getAlias('@web/js/angular_only.js'); ?>"></script>
-    <?php /*<script src="<?php echo Yii::getAlias('@web/js/angular/1.5.5/angular-route.min.js'); ?>"></script> */?>
 </head>
 <body class="Mi_body Mia_body">
 <?php $this->beginBody() ?>
