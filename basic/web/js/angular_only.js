@@ -19,7 +19,8 @@ var ngIndexModule = angular.module('App', [])/*.config(function($routeProvider, 
         }).otherwise('/');
 
     //$locationProvider.html5Mode(true);
-})*/.controller('AppCore', function($scope, $rootScope) {
+})*/.controller('AppCore', function($scope) {
+    $scope._logica = "qwerty";
     /*$rootScope.$on('$locationChangeStart', function() {
         console.log(performance.now(), '$locationChangeStart user function');
     });
@@ -30,8 +31,9 @@ var ngIndexModule = angular.module('App', [])/*.config(function($routeProvider, 
         console.log(performance.now(), '$viewContentLoaded user function');
     });
     */
-    $scope.isLoading = true;
+    /*$scope.isLoading = true;
     $scope.log = [];
+    $scope._q = "qwerty";
     $scope.planets = [
         {
             id: 2,
@@ -46,13 +48,11 @@ var ngIndexModule = angular.module('App', [])/*.config(function($routeProvider, 
             name: '3zxcvb'
         },
     ];
+    */
 
-}).controller('BookController', function($scope) {
-    console.warn('BookController');
-}).controller('IndexController', function($scope) {
-    console.warn('IndexController');
 });
 
+/*
 ngIndexModule.directive('ngPlanet', function() {
     return {
         restrict: 'EAC',
@@ -70,7 +70,8 @@ ngIndexModule.directive('ngPlanet', function() {
         }
     };
 });
-
+*/
+/*
 ngIndexModule.directive('ngSystem', function ($timeout) {
     return {
         restrict: 'EAC',
@@ -93,7 +94,8 @@ ngIndexModule.directive('ngSystem', function ($timeout) {
         }
     }
 });
-
+*/
+/*
 ngIndexModule.directive('ngMaple', ngMapleFactory);
 
 ngMapleFactory.$inject = [];
@@ -105,16 +107,6 @@ function ngMapleFactory() {
         scope: false,
         compile: function compile(temaplateElement, templateAttrs) {
             warn('ngMapleFactory.compile');
-            /*var pureElement = temaplateElement[0];
-            pureElement.insertAdjacentHTML('beforeend', '<div>{{' + templateAttrs.ngMaple + '}}</div>');*/
-            /*return {
-                pre: function (scope, element, attrs, ctrl, $transclude) {
-                    warn('ngMapleFactory.compile.pre');
-                },
-                post: function (scope, element, attrs, ctrl, $transclude) {
-                    warn('ngMapleFactory.compile.post');
-                }
-            }*/
         },
         transclude: false,
         template: '<div class="ngMapleFactory"><h2>ngMapleFactory</h2></div>',
@@ -142,3 +134,4 @@ function ngMapleFactory() {
         }
     }
 }
+*/

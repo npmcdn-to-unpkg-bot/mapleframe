@@ -23,8 +23,12 @@ use app\assets\AppAsset;
 <body class="Mi_body Mia_body">
 <?php $this->beginBody() ?>
     <header class="Mi_header Mia_header Gi_text_align_center"> </header>
-    <div ng-app="App" id="wrapper" class="Mi_wrapper Mia_wrapper Gi_clear">
-        <?php echo $content; ?>
+        <div ng-app="App" id="wrapper" class="Mi_wrapper Mia_wrapper Gi_clear">
+            <div ng-controller="AppCore" style="padding:20px 40px;">
+                {{ _logica }}
+            </div>
+        </div>
+        <?php //echo $content; ?>
     </div>
     <footer style="display:none;" class="Mi_footer"></footer>
 <?php $this->endBody(); /*<script src="<?php echo Yii::getAlias('@web/js/mia.js'); ?>"></script>*/ ?>

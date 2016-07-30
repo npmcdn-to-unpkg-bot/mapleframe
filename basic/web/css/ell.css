@@ -1,0 +1,168 @@
+@charset "utf-8";
+
+.Ell_map {
+    width: 640px;
+    height: 640px;
+    position: relative;
+    background-color: #e7e77e;
+}
+
+.Ell_field {
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    background-color: #ffffff;
+    position: absolute;
+    z-index: 1;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100px;
+    border:1px solid #999;;
+}
+
+.Ell_field_oil:after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    height: 20px;
+    width: 20px;
+    background-color: #000;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    margin: 20px 0 0 -10px;
+}
+.Ell_field_ecology:after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    height: 20px;
+    width: 20px;
+    background-color: #0f0;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    margin: 20px 0 0 -10px;
+}
+.Ell_field_minerals:after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    height: 20px;
+    width: 20px;
+    background-color: #e7e77e;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    margin: 20px 0 0 -10px;
+}
+
+
+.Ell_field_0 {
+    left: 50%;
+    top: 50%;
+    margin: -50px 0 0 -50px;
+}
+.Ell_field_1 {
+    left: 50%;
+    top: 50%;
+    margin: -160px 0 0 -50px;
+}
+.Ell_field_2 {
+    left: 50%;
+    top: 50%;
+    margin: -105px 0 0 50px;
+}
+.Ell_field_3 {
+    left: 50%;
+    top: 50%;
+    margin: 5px 0 0 50px;
+}
+.Ell_field_4 {
+    left: 50%;
+    top: 50%;
+    margin: 60px 0 0 -50px;
+}
+.Ell_field_5 {
+    left: 50%;
+    top: 50%;
+    margin: -105px 0 0 -150px;
+}
+.Ell_field_6 {
+    left: 50%;
+    top: 50%;
+    margin: 5px 0 0 -150px;
+}
+
+.Ell_field_7 {
+    left: 50%;
+    top: 50%;
+    margin: -270px 0 0 -50px;
+}
+
+.Ell_field_8 {
+    left: 50%;
+    top: 50%;
+    margin: -215px 0 0 50px;
+}
+
+.Ell_field_9 {
+    left: 50%;
+    top: 50%;
+    margin: -160px 0 0 150px;
+}
+
+.Ell_field_10 {
+    left: 50%;
+    top: 50%;
+    margin: -50px 0 0 150px;
+}
+
+.Ell_field_11 {
+    left: 50%;
+    top: 50%;
+    margin: 60px 0 0 150px;
+}
+
+.Ell_field_12 {
+    left: 50%;
+    top: 50%;
+    margin: 115px 0 0 50px;
+}
+
+.Ell_field_13 {
+    left: 50%;
+    top: 50%;
+    margin: 170px 0 0 -50px;
+}
+
+.Ell_field_14 {
+    left: 50%;
+    top: 50%;
+    margin: 115px 0 0 -150px;
+}
+
+.Ell_field_15 {
+    left: 50%;
+    top: 50%;
+    margin: 60px 0 0 -250px;
+}
+
+.Ell_field_16 {
+    left: 50%;
+    top: 50%;
+    margin: -50px 0 0 -250px;
+}
+
+.Ell_field_17 {
+    left: 50%;
+    top: 50%;
+    margin: -160px 0 0 -250px;
+}
+
+.Ell_field_18 {
+    left: 50%;
+    top: 50%;
+    margin: -215px 0 0 -150px;
+}
+

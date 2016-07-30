@@ -6,6 +6,11 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'modules' => [
+        'ell' => [
+            'class' => 'app\modules\ell',
+        ],
+    ],
     'components' => [
         /*'assetManager' => [
             'bundles' => [
@@ -59,6 +64,16 @@ $config = [
                 [
                     'pattern' => '/',
                     'route' => 'site/index',
+                    'suffix' => ''
+                ],
+                [
+                    'pattern' => '/ell',
+                    'route' => 'ell/default/index',
+                    'suffix' => ''
+                ],
+                [
+                    'pattern' => '/ell/<action>',
+                    'route' => 'ell/default/<action>',
                     'suffix' => ''
                 ],
                 [
