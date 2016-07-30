@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m160730_052843_ell_turns_extend extends Migration
+class m160730_052843_ell_phases_extend extends Migration
 {
     public function up()
     {

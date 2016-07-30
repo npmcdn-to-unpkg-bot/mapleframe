@@ -12,6 +12,8 @@ use yii\base\Exception;
 class DefaultController extends Controller
 {
     protected $fields_condition = [ '0' => 3, '1' => 8, '3' => 4, '5' => 4, ];
+    protected $types = ['ecology','oil','minerals','combine'];
+    protected $counts = [3,7,7,2];
     protected $ecology = [
         ['id' => 1,'type' => 0,'ecology' => 0,'oil' => 0,'minerals' => 0,'selected' => false],
         ['id' => 2,'type' => 0,'ecology' => 0,'oil' => 0,'minerals' => 0,'selected' => false],
@@ -53,22 +55,24 @@ class DefaultController extends Controller
     {
         return $this->render('test');
     }
-    
+
 
     public function actionCreatemap() {
-        
 
-        $crew_count = 4;
-        $_result = [ '0' => 3, '1' => 8, '3' => 4, '5' => 4, ];
-        // 0, 6, 18
         $map = [];
+        $map = array_merge(
+            $map,
+            $this->_first_circle_generate(),
+            $this->_second_circle_generate()
+        );
         return $this->render('index', ['map' => $map]);
-        
+
     }
+
 
     /*protected function _get_field_by_ecology($ecology) {
         $result = null;
-        if(Core::isNumber($ecology)) {
+        if(Core::is_integer($ecology)) {
             $ecology = (int)$ecology;
             foreach($this->fields as $index => $field) {
                 if($ecology === $field['ecology'] && !$field['selected']) {
@@ -83,47 +87,80 @@ class DefaultController extends Controller
         }
         $result['selected'] = true;
         return $result;
-        
+
     }
     */
 
-    
-    /*protected function _first_circle_generate() {
+    protected function _rand($min, $max) {
+        $result = null;
+        if(Core::is_integer($min) and Core::is_integer($max)) {
+            $result = rand($min, $max);
+        } else {
+            throw new Exception('500.1.2.1');
+        }
+        return $result;
+    }
+
+    protected function _first_circle_generate() {
         $local_map = [ null ];
-        $position = 0;
-        $local_map[ $position ] = $this->_get_field_by_ecology( 3 );
-        return $local_map;
-    }*/
+        // какой квадрат будет задействован
+        $i = $this->_rand(0, 3);
+        $type = $this->types[$i];
+        //
+        $index = $this->_rand( 0, $this->counts[$i] - 1 );
+        //
+        $element = ($this->$type)[ $index ];
+        //
+        $local_map[0] = $element;
+        $this->$type = array_filter($this->$type, function($v, $k) use ( $index ) {
+            return $k !== $index;
+        }, ARRAY_FILTER_USE_BOTH);
+        $this->counts[$i] = $this->counts[$i] - 1;
 
-    /*protected function _second_circle_generate() {
+        return $local_map;
+
+    }
+
+    protected function _ecology_type_count($count) {
+
+    }
+
+    protected function _bool() {
+        return (bool)$this->_rand(0, 1);
+    }
+
+    protected function _index($count, $length) {
+        $result = [];
+        $limit = 0;
+        while( (count($result) !== (int)$length) || ($limit > 30) ) {
+            $index = $this->_rand(0, $count - 1);
+            if(!in_array( $index, $result )) {
+                $result[] = $index;
+            }
+            $limit = $limit + 1;
+        }
+        return $result;
+    }
+
+    protected function _second_circle_generate() {
         $local_map = [ null, null, null, null, null, null ];
-        ////
-        //Будет ли в кольце заповедник
-        $isset = true;
-        //cколько будет у нас заповедников
-        $count = 1;
-        // в какую позицию займет заповедник
-        $position = [0];
-        foreach( $position as $index ) {
-            $local_map[$index] = $this->_get_field_by_ecology( 0 );
+        // будет ли заповедник во втором кольце
+        $local_map = [ null, null, null, null, null, null ];
+        if($this->counts[0] !== 0) {
+            $ecology_count = $this->_rand(0, $this->counts[0]);
+            $ecology_positions = $this->_index( count($local_map), $ecology_count );
+            Core::Q( $this->_index( count($local_map), $ecology_count ));
         }
-        
-        
-        /////
-        //Будет ли в кольце 5 тип
-        $isset = true;
-        //cколько будет у нас заповедников
-        $count = 2;
-        // в какую позицию займет заповедник
-        $position = [1, 2];
-        foreach( $position as $index ) {
-            $local_map[$index] = $this->_get_field_by_ecology( 5 );
+        if($this->counts[3] !== 0) {
+            $combine_count = $this->_rand(0, $this->counts[3]);
         }
-        
-        /////
-        return $local_map;
+        $even = (bool)$this->_rand(0, 1);
+        foreach($local_map as $index => $field) {
 
-    }*/
+        }
+        return $local_map;
+        // количество заповедников
+    }
 
     /*
     protected function _thirth_circle_generate() {

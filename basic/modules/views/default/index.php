@@ -2,8 +2,11 @@
 $this->registerCssFile(Yii::getAlias('@web/css/ell.css'));
 ?>
 <div class="Ell_map">
-<?php foreach ($map as $index => $field) { ?>
-    <?php 
+<?php
+if(!isset($map)) {
+    $map = [];
+}
+foreach ($map as $index => $field) {
         $type = '';
         switch( $field['type'] ) {
             case '0':
